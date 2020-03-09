@@ -3,11 +3,18 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { ListaComponent } from './lista/lista.component';
+import { CestaComponent } from './cesta/cesta.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    ListaComponent,
+    CestaComponent
   ],
   imports: [
     BrowserModule

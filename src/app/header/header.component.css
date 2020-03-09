@@ -52,8 +52,11 @@
 
   .content {
     display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
     flex-direction: column;
-    background-color: white !important;
+    align-items: center;
   }
 
   svg.material-icons {
@@ -283,6 +286,14 @@
       visibility: hidden;
     }
   }
-.red{
-  background-color: red !important;
-}
+  .panvelTitle{
+    font-style: italic;
+    color: white;
+  }
+  .red{
+    background-color: red !important;
+  }
+  .colorBlue{
+    background-color: #070a4d !important;
+    color:white !important;
+  }
