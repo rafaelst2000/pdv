@@ -32,7 +32,7 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #0d023d;
+    background-color: #0F184C;
     color: white;
     font-weight: 600;
   }
@@ -294,6 +294,15 @@
     background-color: red !important;
   }
   .colorBlue{
-    background-color: #070a4d !important;
+    background-color: #0F184C !important;
     color:white !important;
   }
+
+  .fontAwesome{ 
+    font-family: 'Helvetica', FontAwesome, sans-serif; 
+    height: 60px;
+
+  }
+  .fontAwesome:not(:focus) {
+    font-style:italic;
+    }
