@@ -6,13 +6,10 @@ import { Observable } from 'rxjs/Observable';
 
 import { MedicoForm } from './forms/medico.form';
 import { MedicoModel } from '../model/medico.model';
-import { SelectOptionModel } from '../../../shared/input/model/select-option.model';
 
-import { FormsUtils } from '../../../shared/forms/forms.utils';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import { MedicoService } from '../services/medico.service';
-import { NotificationService } from '../../../shared/notification/notification.service';
 
 @Component({
     selector: 'app-busca-medico',
@@ -22,7 +19,7 @@ import { NotificationService } from '../../../shared/notification/notification.s
 export class BuscaMedicoComponent implements OnInit, OnChanges {
 
     public listaUf: string[];
-    public listaTipo: Array<SelectOptionModel>;
+    public listaTipo: Array<any>;
     public medicoForm: FormGroup;
     private buscaMedico: boolean = false;
 
@@ -49,12 +46,11 @@ export class BuscaMedicoComponent implements OnInit, OnChanges {
 
     @ViewChild('buttonBuscaMedico')
     public buttonBuscaMedico: ElementRef;
-    formUtil: FormsUtils;
 
     constructor(
         private medicoFormFactory: MedicoForm,
         private medicoService: MedicoService,
-        public notification: NotificationService) { }
+        public notification: any) { }
 
     ngOnInit(): void {
         this.medicoForm = this.medicoFormFactory.createForm();

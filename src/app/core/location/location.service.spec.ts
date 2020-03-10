@@ -1,13 +1,9 @@
 import { ComponentFixture, async } from '@angular/core/testing';
 import { TestBed } from '@angular/core/testing';
 import { LocationService } from './location.service';
-import {TestSuite} from "../../test-utils/test-suite";
-
 
 describe('LocationService', () => {
     let locationService: LocationService;
-
-    TestSuite.configure();
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
