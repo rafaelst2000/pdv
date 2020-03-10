@@ -1,12 +1,12 @@
+.panvelTitle{
+  font-style: italic;
+  color: white;
+}
 .red{
     background-color: red !important;
 }
 .item{
-    padding: 12px !important;
-    background-color: white;
-}
-.out{
-  background-color:#f0f0f0;
+    background-color: #E7EEF2;
 }
 img{
     width: 100%;
@@ -14,6 +14,37 @@ img{
     float: left;
 }
 .blue{
-  background-color: #0F184C!important;
+  background-color: #0F184C !important;
   color: white;
+}
+
+.buttonOmni{
+  border-radius: 100%;
+  background-color: #41B9DA;
+  color: white;
+  border: none !important;
+  width: 25px;
+  height: 25px;
+  font-size: 100%;
+  font-weight: bolder;
+  font: sans-serif;
+
+}
+.buttonTrash{
+  background-color: #E7EEF2;
+  border: none;
+  color: grey;
+  font-size: 200%;
+}
+.buttonOmni:focus{
+  outline-style: none;
+}
+.inputOmni{
+  border-radius: 4px !important; 
+  background-color: white;
+  border: 1px solid lightgrey;
+  width: 60px;
+  height: 40px;
+  text-align: center;
+  font-size: 120%;
 }

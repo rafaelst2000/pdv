@@ -1,39 +1,27 @@
-<div class="row align-items-center justify-content-center col-xl-8 float-left mt-2 ml-0">
-    <div class="out p-2 col-xl-10">
-        <div class="item col-xl-12 mt-1">
-            <div class="col-xl-10"></div>
-                    <img src="assets/remedio.jpg" style="width: 60px;" class="rounded float-left mr-2">
-                    <h3 class="display-6">Nome do Produto</h3>
-                    <p class="text-muted">Preço Unitário: R$ 10.00</p>   
-                             
-              <div class="btn-group btn-group-toggle float-left" data-toggle="buttons">
-                  <button class="btn btn-secondary col-2"><i class="fas fa-plus"></i></button>
-                  <input type="text" class="form-control col-3">
-                  <button class="btn btn-secondary col-2"><i class="fas fa-minus"></i></button>
-              </div>  
-
-              <div class="text-right">
-                  <button class="btn btn-secondary" href="#" role="button"><i class="fas fa-trash-alt"></i></button>   
-              </div>     
+<div class="row">
+        <div class="col-xl-12 item mt-1">
+                <div class="col-xl-12 float-left">
+                    <div *ngFor="let item of cesta; let i = index">
+                    <p class="pt-2 text-uppercase font-weight-bold col-xl-6 float-left">{{i}} - {{cesta[i].produto.codigo}} - {{cesta[i].produto.nome}}</p>
+                
+                    <div class="col-xl-2 float-left">
+                        <p class="pt-1 text-success">Disponível: {{cesta[i].produto.estoque}}</p>
+                        <p class="font-weight-bold">Reservado: {{cesta[i].quantidadeEntregar}}</p>
+                    </div>
+    
+                    <div class="col-xl-2 float-left">
+                        <p class="pt-1 font-weight-bold">Preço</p>
+                        <h5 class="font-weight-bold">R${{cesta[i].produto.precoDe}}</h5>
+                    </div>
+    
+                    <div class="col-xl-2 float-right text-right pt-3">
+                        <button class="buttonOmni"><i class="fas fa-minus"></i></button>
+                        <input  class="inputOmni" type="text">
+                        <button class="buttonOmni"><i class="fas fa-plus"></i></button>
+                        <button class="buttonTrash align-middle"><i class="far fa-trash-alt"></i></button>
+                    </div>   
+                </div>       
+                </div>          
         </div>
-    </div>
-</div>
-
-
-    <div class="row align-items-center col-xl-4 float-center ml-1 mt-2 bg-white">
-      <div class="out p-2 col-xl-10 bg-white">
-          <div class="text-center col-xl-12 text-muted">
-              <h6 class="pt-2"> RESUMO DA SUA COMPRA</h6>
-              <hr>
-            </div>
-            <div class="col-xl-12">
-                <p class="text-muted font-weight-bold">Valor: R$ xx,yy</p>
-                <p class="text-muted font-weight-bold">Descontos: R$ xx,yy</p>
-                <h5 class="font-weight-bolder">Total: R$ XX, YY</h5>
-            </div>
-            <div class="col-xl-12">
-                <button class="btn blue col-xl-12" href="#" role="button">Finalizar Compra</button> 
-            </div> 
-      </div>
-            
+    
     </div>

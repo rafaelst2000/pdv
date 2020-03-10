@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { ListaComponent } from './lista/lista.component';
 import { CestaComponent } from './cesta/cesta.component';
+import { FooterComponent } from './footer/footer.component';
+import { StorageFacade } from './core/persistence/storage.facade';
+import { PersistenceService } from './core/persistence';
 
 
 
@@ -14,12 +17,16 @@ import { CestaComponent } from './cesta/cesta.component';
     AppComponent,
     HeaderComponent,
     ListaComponent,
-    CestaComponent
+    CestaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    StorageFacade,
+    PersistenceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

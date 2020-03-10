@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StorageFacade } from '../core/persistence/storage.facade';
 
 @Component({
   selector: 'pdv-cesta',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cesta.component.css']
 })
 export class CestaComponent implements OnInit {
+  public cesta: any;
 
-  constructor() { }
+  constructor(
+    private storageFacade: StorageFacade
+  ) { }
 
   ngOnInit() {
+    this.cesta = this.storageFacade.cesta;
   }
 
 }

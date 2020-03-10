@@ -1,0 +1,26 @@
+footer{
+    background-color: #D6DFE4;
+    box-shadow: inset 0 0 1em #D6DFE4, 0 0 2em lightgrey !important;
+}
+.vertical{
+    border:         none;
+    border-left:    #CDCDCE;
+    height:         50px;
+    width:          1px;    
+    background-color: #CDCDCE;
+    float: left;  
+}
+.red{
+    background-color: red !important;
+}
+.preVenda{
+    background-color: #868E96;
+    color: white;
+    font-weight: bolder;
+    box-shadow: 0.1px 0.1px 3px black;
+}
+.entrega{
+    color: white !important;
+    border-color: white !important;
+    border-style: solid 3px !important; 
+}
