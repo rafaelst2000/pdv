@@ -8,7 +8,7 @@ import { StorageFacade } from '../core/persistence/storage.facade';
 })
 export class FooterComponent implements OnInit {
   public cesta: any;
-  public total = 24.2;
+  public total;
 
   constructor(
     private storageFacade: StorageFacade
