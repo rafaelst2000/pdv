@@ -1,5 +1,4 @@
 import { Produto } from './produto';
-import { Receita } from './receita';
 import { AutorizacaoPbmItemCesta } from './autorizacao-pbm-item-cesta';
 
 export class Item {
@@ -8,7 +7,7 @@ export class Item {
         public contempladoConvenio: string = 'N',
         public produto?: Produto,
         public quantidade?: number,
-        public receita?: Receita,
+        public receita?: any,
         public associado?: number,
         public codigoLiberador?: number,
         public categoriaItem?: string,

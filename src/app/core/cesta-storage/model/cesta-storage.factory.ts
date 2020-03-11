@@ -3,14 +3,9 @@ import { Injectable } from '@angular/core';
 import { Builder } from 'builder-pattern';
 
 import { Item } from './item';
-import { Medico } from './medico';
 import { Produto } from './produto';
-import { Receita } from './receita';
 import { Promocao } from './promocao';
-import { Paciente } from './paciente';
-import { Associado } from './associado';
 import { Comprador } from './comprador';
-import { ConvenioCesta } from './convenio-cesta';
 import { RegraFiscal } from './regra-fiscal';
 
 @Injectable()
@@ -24,7 +19,6 @@ export class CestaStorageFactory {
                 .identificadorUnico(item.identificadorUnico)
                 .pbmAutorizada(item.pbmAutorizada)
                 .produto(this.montarProduto(item.produto))
-                .receita(this.montarReceita(item))
                 .quantidade(item.quantidade)
                 .planoBeneficioMedico(item.planoBeneficioMedico)
                 .autorizacoesPbms(item.autorizacoesPbms)
@@ -63,11 +57,11 @@ export class CestaStorageFactory {
                 .precoPor(produto.precoPor)
                 .principioAtivo(produto.principioAtivo)
                 .promocao(this.montarPromocao(produto))
-                .convenio(this.montarConvenio(produto))
                 .psicotropico(produto.psicotropico)
                 .retencaoReceita(produto.retencaoReceita)
                 .situacaoItem(produto.situacaoItem)
-                .valorDesconto(produto.valorDesconto).build();
+                .valorDesconto(produto.valorDesconto)
+                .build();
     }
 
     private montarPromocao(produto): Promocao {
@@ -80,53 +74,6 @@ export class CestaStorageFactory {
             Builder<Promocao>().build();
     }
 
-    private montarConvenio(produto): ConvenioCesta {
-        return this.hasObject(produto, 'convenio') ?
-            Builder<ConvenioCesta>()
-                .codigo(produto.convenio.codigo)
-                .filial(produto.convenio.filial)
-                .percentualDesconto(produto.convenio.percentualDesconto)
-                .associado(this.montarAssociado(produto.convenio)).build() :
-            Builder<ConvenioCesta>().build();
-    }
-
-    private montarAssociado(convenio): Associado {
-        return Builder<Associado>()
-                .codigo(convenio.associado.codigo)
-                .matricula(convenio.associado.matricula).build();
-    }
-
-    private montarReceita(item): Receita {
-        return this.hasObject(item, 'receita') ?
-            Builder<Receita>()
-                .codigoFuncionario(item.receita.codigoFuncionario)
-                .codigoModeloReceita(item.receita.codigoModeloReceita)
-                .dataReceita(item.receita.dataReceita)
-                .numeroNotificacao(item.receita.notificacao)
-                .numeroRegistro(item.receita.numeroRegistro)
-                .ufNotificacao(item.receita.ufNotificacao)
-                .siglaUf(item.receita.siglaUf)
-                .uf(item.receita.uf)
-                .tipoCaptacao(item.receita.tipoCaptacao)
-                .tipoProfissional(item.receita.tipoProfissional)
-                .paciente(this.montarPaciente(item.receita))
-                .comprador(this.montarComprador(item.receita))
-                .medico(this.montarMedico(item.receita))
-                .convenio(item.convenio)
-                .build() :
-            Builder<Receita>().build();
-    }
-
-    private montarPaciente(receita): Paciente {
-        return this.hasObject(receita, 'paciente') ?
-            Builder<Paciente>()
-                .dataNascimento(receita.paciente.dataNascimento)
-                .idade(receita.paciente.idade)
-                .nome(receita.paciente.nome)
-                .sexo(receita.paciente.sexo)
-                .build() :
-            Builder<Paciente>().build();
-    }
 
     private montarComprador(receita): Comprador {
         return this.hasObject(receita, 'comprador') ?
@@ -141,17 +88,6 @@ export class CestaStorageFactory {
                 .rgOrgaoEmissor(receita.comprador.rgSSP)
                 .uf(receita.comprador.uf).build() :
             Builder<Comprador>().build();
-    }
-
-    private montarMedico(receita): Medico {
-        return this.hasObject(receita, 'medico') ?
-            Builder<Medico>()
-                .codigo(receita.medico.codigo)
-                .codigoRegistro(receita.medico.codigoRegistro)
-                .nome(receita.medico.nome)
-                .tipo(receita.medico.tipo)
-                .uf(receita.medico.uf).build() :
-            Builder<Medico>().build();
     }
 
     private hasObject(object: Object, propriedade: string): boolean {

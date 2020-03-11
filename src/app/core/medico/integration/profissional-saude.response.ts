@@ -1,9 +1,0 @@
-export class ProfissionalSaudeRespnse{
-    constructor(
-        public nome?: string,
-        public codigoRegistro?: number,
-        public codigoEntidadeComercial?: number,
-        public tipo?: number,
-        public uf?: string
-    ){}
-}

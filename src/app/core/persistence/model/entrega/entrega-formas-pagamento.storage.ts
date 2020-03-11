@@ -1,7 +1,6 @@
 import { EnderecoStorage } from "../endereco.storage";
 import { TaxaEntregaStorage } from "./taxa-entrega.storage";
 import { HorarioRotaStorage } from "./model/horario-rota.storaga";
-import { TelefoneModel } from "../cliente/telefone.model";
 import { Serializable } from "../serializable";
 import { PersistenceEnum } from "../persistence.enum";
 import { RetiradaLockerStorage } from "./model/retirada-locker.storage";
@@ -18,7 +17,7 @@ export class EntregaFormasPagamentoStorage extends Serializable {
         public previsaoEntrega?: string,
         public taxaEntrega?: TaxaEntregaStorage,
         public reservaLocker?: RetiradaLockerStorage,
-        public telefone?: TelefoneModel,
+        public telefone?: any,
         public tipoEntrega?: string
     ) {
         super();

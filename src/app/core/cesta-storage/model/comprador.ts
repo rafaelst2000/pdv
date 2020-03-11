@@ -1,4 +1,3 @@
-import { EnderecoCompradorReceita } from './endereco-comprador-receita';
 
 export class Comprador {
     constructor(public cpf?: string,
@@ -9,5 +8,5 @@ export class Comprador {
                 public nome?: string,
                 public numeroTelefone?: string,
                 public dddTelefone?: string,
-                public endereco?: EnderecoCompradorReceita) {}
+                public endereco?: any) {}
 }

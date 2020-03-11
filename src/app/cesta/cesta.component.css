@@ -19,19 +19,18 @@ img{
 }
 
 .buttonOmni{
-  border-radius: 100%;
+  border-radius: 50%;
   background-color: #41B9DA;
   color: white;
   border: none !important;
-  width: 25px;
-  height: 25px;
-  font-size: 100%;
+  height: 30px;
+  width: 30px;
   font-weight: bolder;
   font: sans-serif;
 
 }
 .buttonTrash{
-  background-color: #E7EEF2;
+  text-decoration: none;
   border: none;
   color: grey;
   font-size: 200%;

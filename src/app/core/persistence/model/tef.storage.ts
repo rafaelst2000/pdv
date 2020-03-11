@@ -2,7 +2,6 @@ import { TefRecargaStorage } from './tef-recarga.storage';
 import { Serializable } from './serializable';
 import { PersistenceEnum } from './persistence.enum';
 import { CupomTefStorage } from './cupom-tef.storage';
-import { CupomFarmaciaPopularStorage } from './farmacia-popular/cupom-farmacia-popular.storage';
 
 export class TefStorage extends Serializable {
 
@@ -11,7 +10,7 @@ export class TefStorage extends Serializable {
         public cupomsTef?: CupomTefStorage[],
         public cuponsTefRecarga?: CupomTefStorage[],
         public tefRecarga?: TefRecargaStorage,
-        public cupomFarmaciaPopular?: CupomFarmaciaPopularStorage
+        public cupomFarmaciaPopular?: any
     ) {
         super();
         this.cupomsTef = cupomsTef || [];

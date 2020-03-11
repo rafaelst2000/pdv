@@ -9,6 +9,7 @@ import { CestaComponent } from './cesta/cesta.component';
 import { FooterComponent } from './footer/footer.component';
 import { StorageFacade } from './core/persistence/storage.facade';
 import { PersistenceService } from './core/persistence';
+import { CoreModule } from './core/core.module';
 
 
 
@@ -21,7 +22,8 @@ import { PersistenceService } from './core/persistence';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CoreModule
   ],
   providers: [
     StorageFacade,

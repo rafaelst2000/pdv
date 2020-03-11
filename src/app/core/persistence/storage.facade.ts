@@ -4,9 +4,7 @@ import { Builder } from "builder-pattern";
 
 import {
   FuncionarioStorage,
-  ConfiguracaoEstacaoStorage,
   FilialStorage,
-  ClienteStorage,
   PersistenceService,
   VendaStorage,
   ConvenioStorage
@@ -15,22 +13,18 @@ import {
 import { Item } from "../cesta-storage/model/item";
 import { PersistenceEnum } from "./model/persistence.enum";
 
-import { AutorizacaoEmpresaCartaoStorage } from './model/empresa-cartao/autorizacao-empresa-cartao.storage';
 import { TefStorage } from "./model/tef.storage";
 import { PackNovoStorage } from "./model/pack/pack-novo.storage";
 import { TaxaEntregaStorage } from "./model/entrega/taxa-entrega.storage";
 import { PbmFuncionalStorage } from "./model/pbm-funcional/pbm-funcional.storage";
-import { MaquinaEstadoStorage } from "./model/maquina-estado/maquna-estado.storage";
 import { EnderecoEntregaStorage } from "./model/entrega/endereco-entrega.storage";
 import { AdminConvenioPbmStorage } from "./model/multiplas-pbms/admin-convenio-pbm.storage";
 import { OrcamentoStorage } from "./model/orcamento.storage";
 import { PoliticasDescontoStorage } from "./model/politicas-desconto/politicas-desconto-model";
 import { LiberacaoDescontoStorage } from "./model/liberacao-desconto.storage";
-import { DocumentosConvenioStorage } from "./model/convenio/documentos-convenio.storage";
 import { EntregaFormasPagamentoStorage } from "./model/entrega/entrega-formas-pagamento.storage";
 import { ItemLiberacaoDescontoStorage } from "./model/itens-liberacao-desconto.storage";
 import { ChangeStorage } from "./model/changeStorage";
-import { CapturaConvenioStorage } from "./model/convenio/captura-convenio.storage";
 import { LiberacaoFreteStorage } from "./model/liberacao-frete.storage";
 
 @Injectable()
@@ -63,33 +57,6 @@ export class StorageFacade {
     }
   }
 
-  get configuracaoEstacaoStorage(): ConfiguracaoEstacaoStorage {
-    return this.persistenceService.deserializar(
-      new ConfiguracaoEstacaoStorage()
-    );
-  }
-
-  set configuracaoEstacaoStorage(
-    configuracaoEstacaoStorage: ConfiguracaoEstacaoStorage
-  ) {
-    const configuracaoEstacaoOld = configuracaoEstacaoStorage;
-    if (configuracaoEstacaoStorage) {
-      this.persistenceService.serializar(
-        new ConfiguracaoEstacaoStorage().fillFromJSON(
-          JSON.stringify(configuracaoEstacaoStorage)
-        )
-      );
-    } else {
-      this.persistenceService.remover(PersistenceEnum.ESTACAO);
-    }
-
-    this.changes$.next(
-      Builder<ChangeStorage<ConfiguracaoEstacaoStorage>>()
-        .previousValue(configuracaoEstacaoOld)
-        .currentValue(configuracaoEstacaoStorage)
-        .build()
-    );
-  }
 
   get vendaStorage(): VendaStorage {
     return this.persistenceService.deserializar(new VendaStorage());
@@ -136,27 +103,6 @@ export class StorageFacade {
     } else {
       this.persistenceService.remover(PersistenceEnum.ORCAMENTO);
     }
-  }
-
-  get clienteStorage(): ClienteStorage {
-    return this.persistenceService.deserializar(new ClienteStorage());
-  }
-
-  set clienteStorage(clienteStorage: ClienteStorage) {
-    const clienteOld = this.clienteStorage;
-    if (clienteStorage) {
-      clienteStorage.persistenceKey = ClienteStorage.prototype.persistenceKey;
-      this.persistenceService.serializar(clienteStorage);
-    } else {
-      this.persistenceService.remover(PersistenceEnum.CLIENTE);
-    }
-
-    this.changes$.next(
-      Builder<ChangeStorage<ClienteStorage>>()
-        .previousValue(clienteOld)
-        .currentValue(clienteStorage)
-        .build()
-    );
   }
 
   get convenioStorage(): ConvenioStorage[] {
@@ -332,23 +278,6 @@ export class StorageFacade {
     }
   }
 
-  get documentosConvenioStorage(): DocumentosConvenioStorage[] {
-    return this.persistenceService.buscar<DocumentosConvenioStorage[]>(
-      PersistenceEnum.DOCUMENTOS_CONVENIO
-    );
-  }
-
-  set documentosConvenioStorage(value: DocumentosConvenioStorage[]) {
-    if (value) {
-      this.persistenceService.salvar(
-        PersistenceEnum.DOCUMENTOS_CONVENIO,
-        value
-      );
-    } else {
-      this.persistenceService.remover(PersistenceEnum.DOCUMENTOS_CONVENIO);
-    }
-  }
-
   get liberacaoDescontoStorage(): LiberacaoDescontoStorage {
     return this.persistenceService.deserializar(new LiberacaoDescontoStorage());
   }
@@ -376,18 +305,6 @@ export class StorageFacade {
     }
   }
 
-  get maquinaEstadoStorage(): MaquinaEstadoStorage {
-    return this.persistenceService.deserializar(new MaquinaEstadoStorage());
-  }
-
-  set maquinaEstadoStorage(maquina: MaquinaEstadoStorage) {
-    if (maquina) {
-      maquina.persistenceKey = MaquinaEstadoStorage.prototype.persistenceKey;
-      this.persistenceService.serializar(maquina);
-    } else {
-      this.persistenceService.remover(PersistenceEnum.MAQUINA_ESTADO);
-    }
-  }
 
   get itemLiberacaoDescontoStorage(): Array<ItemLiberacaoDescontoStorage> {
     return this.persistenceService.buscar<Array<ItemLiberacaoDescontoStorage>>(
@@ -420,40 +337,4 @@ export class StorageFacade {
     }
   }
 
-  get capturaConvenioStorage(): CapturaConvenioStorage {
-    return this.persistenceService.buscar<CapturaConvenioStorage>(
-      PersistenceEnum.CAPTURA_CONVENIO
-    );
   }
-
-  set capturaConvenioStorage(capturaConvenioStorage: CapturaConvenioStorage) {
-    if (capturaConvenioStorage) {
-      capturaConvenioStorage.persistenceKey =
-        CapturaConvenioStorage.prototype.persistenceKey;
-      this.persistenceService.serializar(capturaConvenioStorage);
-    } else {
-      this.persistenceService.remover(PersistenceEnum.CAPTURA_CONVENIO);
-    }
-  }
-
-  get autorizacaoEmpresaCartaoStorage(): AutorizacaoEmpresaCartaoStorage {
-    return this.persistenceService.deserializar(new AutorizacaoEmpresaCartaoStorage());
-}
-
-  set autorizacaoEmpresaCartaoStorage(autorizacao: AutorizacaoEmpresaCartaoStorage) {
-    if (autorizacao) {
-      this.persistenceService.salvar(PersistenceEnum.EMPRESA_CARTAO, autorizacao);
-    } else {
-      this.persistenceService.remover(PersistenceEnum.EMPRESA_CARTAO);
-    }
-  }
-
-  get operadorStorage(): FuncionarioStorage {
-    return this.persistenceService.deserializar(new FuncionarioStorage());
-  }
-
-  set operadorStorage(funcionarioStorage: FuncionarioStorage) {
-      this.persistenceService.serializar(funcionarioStorage);
-  }
-
-}

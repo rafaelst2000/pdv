@@ -1,27 +1,24 @@
 <div class="row">
-        <div class="col-xl-12 item mt-1">
-                <div class="col-xl-12 float-left">
-                    <div *ngFor="let item of cesta; let i = index">
-                    <p class="pt-2 text-uppercase font-weight-bold col-xl-6 float-left">{{i}} - {{cesta[i].produto.codigo}} - {{cesta[i].produto.nome}}</p>
+        <div class="col-md-12 item mt-1" *ngFor="let item of cesta; let i = index">
+                <div class="col-md-12 float-left">
+                    <p class="pt-2 text-uppercase font-weight-bold col-md-6 float-left">{{[cesta.length-i]}} - {{cesta[i].produto.codigo}} - {{cesta[i].produto.nome}}</p>
                 
-                    <div class="col-xl-2 float-left">
+                    <div class="col-md-2 float-left">
                         <p class="pt-1 text-success">Disponível: {{cesta[i].produto.estoque}}</p>
                         <p class="font-weight-bold">Reservado: {{cesta[i].quantidadeEntregar}}</p>
                     </div>
     
-                    <div class="col-xl-2 float-left">
+                    <div class="col-md-2 float-left">
                         <p class="pt-1 font-weight-bold">Preço</p>
                         <h5 class="font-weight-bold">R${{cesta[i].produto.precoDe}}</h5>
                     </div>
     
-                    <div class="col-xl-2 float-right text-right pt-3">
-                        <button class="buttonOmni"><i class="fas fa-minus"></i></button>
-                        <input  class="inputOmni" type="text">
-                        <button class="buttonOmni"><i class="fas fa-plus"></i></button>
-                        <button class="buttonTrash align-middle"><i class="far fa-trash-alt"></i></button>
+                    <div class="col-md-2 float-left pt-3 text-right">
+                        <button class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
+                        <input  class="inputOmni col-md-3" type="text">
+                        <button class="buttonOmni "><i class="fas fa-plus"></i></button>
+                        <a href="#" class="buttonTrash align-middle"><i class="far fa-trash-alt"></i></a>
                     </div>   
-                </div>       
-                </div>          
+                </div>              
         </div>
-    
     </div>

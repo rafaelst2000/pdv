@@ -1,6 +1,5 @@
 import { Promocao } from './promocao';
 import { RegraFiscal } from './regra-fiscal';
-import { ConvenioCesta } from './convenio-cesta';
 import { ProdutoPackModel } from './produto-pack.model';
 
 export class Produto {
@@ -42,7 +41,7 @@ export class Produto {
         public situacaoItem: string,
         public valorDesconto: number,
         public possuiEanImpresso: boolean = false,
-        public convenio?: ConvenioCesta,
+        public convenio?: any,
         public itemGeladeira?: boolean,
         public participaFarmaciaPopular?: boolean,
         public possuiKitAdesao?: boolean,
