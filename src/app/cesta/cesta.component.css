@@ -47,3 +47,14 @@ img{
   text-align: center;
   font-size: 120%;
 }
+
+.laranja{
+  color: #F68405;
+}
+.desc{
+  background-color: #F68405;
+  color: white
+}
+.margin{
+  margin-top: -15px !important;
+}
