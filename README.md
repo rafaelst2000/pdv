@@ -1,6 +1,7 @@
 # PdvRafael
+POC de testes do PDV
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.3.
+Projeto gerado pelo Angular CLI versão 1.7.3.
 
 ## Development server
 
