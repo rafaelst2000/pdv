@@ -23,23 +23,23 @@
                     <div class="col-md-2 float-left align-items-center">
                         <div *ngIf="cesta[i].produto.valorDesconto == 0 ; else desconto">
                             <p class="mt-3  font-weight-bold">Preço</p>
-                            <h5 class="font-weight-bold">R$ {{this.CestaService.filtraNumero(cesta[i].produto.precoDe)}}</h5>
+                            <h5 class="font-weight-bold">R$ {{CestaService.valorItem(cesta[i])}} </h5> 
                         </div>  
 
                         <ng-template #desconto>
                             <p class="pt-1 font-weight-bold">Promoção</p>
                             <p class="margin laranja offset-xl-1 offset-md-1"><del>R$ {{this.CestaService.filtraNumero(cesta[i].produto.precoDe)}}</del></p> 
-                            <p class="margin desc col-xl-3 col-sm-6">-{{cesta[i].produto.percentualDesconto}}%</p>
+                            <p class="margin desc col-xl-3 col-sm-6 text-center">-{{this.CestaService.filtraDesconto(cesta[i].produto.percentualDesconto)}}%</p>
                             <h6 class="margin mb-2 laranja font-weight-bold offset-xl-1 offset-md-1">R$ {{this.CestaService.filtraNumero(cesta[i].produto.precoPor)}}</h6>
                         </ng-template>
                     
                     </div>
     
                     <div class="col-md-2 float-left pt-3 text-right">
-                        <button class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
+                        <button (click)=fn() class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
                         <input  class="inputOmni col-md-4" type="text" value="{{cesta[i].quantidade}}">
                         <button class="buttonOmni "><i class="fas fa-plus"></i></button>
-                        <a href="#" (click)="this.CestaService.clicou(i)" class="buttonTrash align-middle"><i class="far fa-trash-alt"></i></a>
+                        <a href="#" class="buttonTrash align-middle"><i class="far fa-trash-alt"></i></a>
                     </div>   
                 </div>              
         </div>

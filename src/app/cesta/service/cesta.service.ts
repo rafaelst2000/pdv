@@ -1,6 +1,13 @@
 import { Injectable } from "@angular/core";
+import { Observable } from 'rxjs/Observable';
 
+import { LocationService } from "../../core";
+import { ConvenioStorage } from '../../core/persistence';
+import { Item } from '../../core/cesta-storage/model/item';
 import { StorageFacade } from '../../core/persistence/storage.facade';
+import { QueryParamsInterface } from "../../core/location/query-params.interface";
+import { EnderecoEntregaStorage } from "../../core/persistence/model/entrega/endereco-entrega.storage";
+import { PoliticasDescontoStorage } from '../../core/persistence/model/politicas-desconto/politicas-desconto-model';
 
 @Injectable()
 export class CestaService{
@@ -9,43 +16,62 @@ export class CestaService{
         private storageFacade: StorageFacade
     ){}
 
+
     public retornarCesta(): any[] {
         return this.storageFacade.cesta || [];
     }
 
+
     public filtraNumero(valor: number): string{
         let novaStr: string
-        novaStr = valor.toString()
-
-        if(novaStr.indexOf(".")==-1){
-           novaStr = novaStr.concat(",00")
-        }      
-       // if(novaStr.split(","))
+        novaStr = valor.toFixed(2)     
         return novaStr.replace(".",",");
-    } //tratar os casos decimal com split
-
-    public clicou(index: number){
-        console.log("clicou no item: "+index)
     }
 
-   /* public removeItemCesta(item: any): void{
-        Storage.prototype.removeItem(Cesta);
+
+    public filtraDesconto(valor: number): string{
+        return Math.trunc(valor).toString() 
     }
 
-    protected removerItemCesta(item: Item): void {
+
+    public valorItem(item: any): string{
+        return this.filtraNumero(item.produto.precoPor);
+    }
+
+    public adicionarItemNaCesta(item: Item): void {
         const cesta: Item[] = this.retornarCesta();
-        this.storageFacade.cesta = cesta.filter(e => !this.validarItensIguais(e, item));    
-        this.remocaoVendaStorage();
+        this.storageFacade.cesta = cesta.concat(item);
     }
 
-    protected validarItensIguais(itemA: any, itemB: any): boolean {
-        return itemA.identificadorUnico == itemB.identificadorUnico &&
-          itemA.produto.codigo == itemB.produto.codigo;
+
+    public buscarIndiceItem(item: Item): number {
+        const cesta: Item[] = this.retornarCesta();
+        return cesta.findIndex(e => e.identificadorUnico == item.identificadorUnico);
+    }
+
+
+    public atualizarItemDaCesta(item: Item): void {
+        const cesta: Item[] = this.retornarCesta();
+        cesta[this.buscarIndiceItem(item)] = item;
+        this.storageFacade.cesta = cesta;
     }
     
-    protected remocaoVendaStorage(): void {
+
+    public atualizarCestaLocalStorage(itens: any): void {
         const cesta = this.retornarCesta();
-        const cliente = this.storageFacade.clienteStorage;
-        if (cesta.isEmpty(cesta) && cliente == null) this.storageFacade.vendaStorage = null;
+        if (Array.isArray(itens)) cesta.unshift(...itens);
+        else cesta.unshift(itens);
+        this.storageFacade.cesta = cesta;
+    }
+
+
+    /*public limparCesta(tituloModal?: string): EstadoCestaModel { {
+          return this.limpezaSemPbm();
     } */
+
+
+    public verificarCestaVazia(): boolean {
+        const cesta: Item[] = this.retornarCesta();
+        return cesta.isEmpty();
+      }
 }
