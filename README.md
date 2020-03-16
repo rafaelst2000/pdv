@@ -30,5 +30,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Versoes
 
 ng --version: 1.7.4
+
 node --version: 8.10.0
+
 npm --version: 3.5.2
