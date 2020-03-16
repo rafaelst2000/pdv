@@ -1,7 +1,7 @@
 # PdvRafael
 POC de testes do PDV
 
-Projeto gerado pelo Angular CLI versão 1.7.3.
+Projeto gerado pelo Angular CLI versão 1.7.4.
 
 ## Running
 
