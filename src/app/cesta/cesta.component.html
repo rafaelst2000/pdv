@@ -1,9 +1,9 @@
 <div class="row">
-        <div class="col-md-12 item mt-1" *ngFor="let item of cesta; let i = index">
-                <div class="col-md-12 float-left">
-                    <p class="pt-2 text-uppercase font-weight-bold col-md-6 float-left">{{[cesta.length-i]}} - {{cesta[i].produto.codigo}} - {{cesta[i].produto.nome}}</p>
+        <div class="col-sm-12 item mt-1 p-0" *ngFor="let item of cesta; let i = index">
+                <div class="col-sm-12 float-left">
+                    <p class="pt-2 text-uppercase font-weight-bold col-sm-6 float-left">{{[cesta.length-i]}} - {{cesta[i].produto.codigo}} - {{cesta[i].produto.nome}}</p>
                 
-                    <div class="col-md-2 float-left">
+                    <div class="col-sm-2 float-left">
 
                         <ng-template [ngIf]="cesta[i].produto.estoque > 0">
                                 <p class="mt-3 text-success">Disponível: {{cesta[i].produto.estoque}}</p>
@@ -20,7 +20,7 @@
                         <p class="font-weight-bold">Reservado: {{cesta[i].quantidadeEntregar}}</p>
                     </div>
     
-                    <div class="col-md-2 float-left align-items-center">
+                    <div class="col-sm-2 float-left align-items-center">
                         <div *ngIf="cesta[i].produto.valorDesconto == 0 ; else desconto">
                             <p class="mt-3  font-weight-bold">Preço</p>
                             <h5 class="font-weight-bold">R$ {{CestaService.valorItem(cesta[i])}} </h5> 
@@ -35,11 +35,11 @@
                     
                     </div>
     
-                    <div class="col-md-2 float-left pt-3 text-right">
-                        <button (click)=fn() class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
-                        <input  class="inputOmni col-md-4" type="text" value="{{cesta[i].quantidade}}">
-                        <button class="buttonOmni "><i class="fas fa-plus"></i></button>
-                        <a href="#" class="buttonTrash align-middle"><i class="far fa-trash-alt"></i></a>
+                    <div class="col-md-2 float-left pt-4 text-right">
+                        <button (click)=CestaService.diminuiQuantidade(i) class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
+                        <input  class="inputOmni col-sm-4" type="text" value="{{cesta[i].quantidade}}">
+                        <button (click)=CestaService.aumentaQuantidade(i) class="buttonOmni"><i class="fas fa-plus"></i></button>
+                        <a (click)=CestaService.deletaItem(i) href="#" class="float-right buttonTrash text-right"><i class="far fa-trash-alt"></i></a>
                     </div>   
                 </div>              
         </div>

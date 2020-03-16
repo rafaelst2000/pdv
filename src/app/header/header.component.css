@@ -15,6 +15,19 @@
   h6 {
     margin: 8px 0;
   }
+  .icon{
+    color: white !important;
+    height: 100%;
+    font-size: 200%;
+  }
+  .w5{
+    background-color: #09264C !important;
+    width: 5% !important;
+    height: 60px;
+  }
+  .w95{
+    width: 95%;
+  }
 
   p {
     margin: 0;
@@ -287,6 +300,7 @@
     }
   }
   .panvelTitle{
+    font-family: 'Fredoka One', cursive !important;
     font-style: italic;
     color: white;
   }

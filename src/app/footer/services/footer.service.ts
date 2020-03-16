@@ -23,11 +23,7 @@ export class FooterService {
     }
     public filtraNumero(valor: number): string{
         let novaStr: string
-        novaStr = valor.toString()
-
-        if(novaStr.indexOf(".")==-1){
-           novaStr = novaStr.concat(",00")
-        }      
+        novaStr = valor.toFixed(2)     
         return novaStr.replace(".",",");
     }
 }      

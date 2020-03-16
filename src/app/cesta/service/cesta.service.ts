@@ -12,16 +12,16 @@ import { PoliticasDescontoStorage } from '../../core/persistence/model/politicas
 @Injectable()
 export class CestaService{
     private cesta = this.storageFacade
+
     constructor(
         private storageFacade: StorageFacade
-    ){}
-
-
-    public retornarCesta(): any[] {
-        return this.storageFacade.cesta || [];
+    ){
+        
     }
-
-
+    public refresh(): void{
+        location.reload(true)
+    }
+    
     public filtraNumero(valor: number): string{
         let novaStr: string
         novaStr = valor.toFixed(2)     
@@ -32,6 +32,52 @@ export class CestaService{
     public filtraDesconto(valor: number): string{
         return Math.trunc(valor).toString() 
     }
+
+
+    public deletaItem(item: any): void{
+        let str = localStorage.getItem("ls.Cesta")
+        let array = JSON.parse(str)
+        array.splice(item,1)
+        localStorage.setItem("ls.Cesta",JSON.stringify(array))
+        this.cesta = this.storageFacade
+        this.refresh()
+    }
+
+    public aumentaQuantidade(item: any): void{
+        let str = localStorage.getItem("ls.Cesta")
+        let array = JSON.parse(str)
+        
+        if(array[item].quantidade<99){
+            array[item].quantidade++
+            localStorage.setItem("ls.Cesta",JSON.stringify(array))
+            this.cesta = this.storageFacade
+            this.refresh()
+        }
+        
+    }
+
+
+    public diminuiQuantidade(item: any): void{
+        let str = localStorage.getItem("ls.Cesta")
+        let array = JSON.parse(str)
+
+        if(array[item].quantidade>0){
+            array[item].quantidade--
+            localStorage.setItem("ls.Cesta",JSON.stringify(array))
+            this.cesta = this.storageFacade
+            this.refresh()
+        }
+
+    }
+
+
+
+
+
+
+
+
+
 
 
     public valorItem(item: any): string{
