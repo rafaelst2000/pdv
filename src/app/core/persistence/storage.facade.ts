@@ -147,6 +147,27 @@ export class StorageFacade {
     );
   }
 
+
+  get lista(): Item[] {
+    return this.persistenceService.buscar<Item[]>(PersistenceEnum.LISTA);
+  }
+
+  set lista(itensLista: Item[]) {
+    const itensOld = this.lista;
+    if (itensLista) {
+      this.persistenceService.salvar(PersistenceEnum.LISTA, itensLista);
+    } else {
+      this.persistenceService.remover(PersistenceEnum.LISTA);
+    }
+
+    this.changes$.next(
+      Builder<ChangeStorage<Item[]>>()
+        .previousValue(itensOld)
+        .currentValue(itensLista)
+        .build()
+    );
+  }
+
   get pbmFuncionalStorage(): PbmFuncionalStorage {
     return this.persistenceService.deserializar(new PbmFuncionalStorage());
   }

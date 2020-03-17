@@ -12,6 +12,7 @@ import { PersistenceService } from './core/persistence';
 import { CoreModule } from './core/core.module';
 import { FooterService } from './footer/services/footer.service'
 import { CestaService } from './cesta/service/cesta.service';
+import { ListaService } from './lista/service/lista.service';
 
 
 
@@ -31,7 +32,8 @@ import { CestaService } from './cesta/service/cesta.service';
     StorageFacade,
     PersistenceService,
     FooterService,
-    CestaService
+    CestaService,
+    ListaService
   ],
   bootstrap: [AppComponent]
 })

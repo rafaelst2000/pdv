@@ -1,4 +1,5 @@
 export enum PersistenceEnum {
+    LISTA = 'ls.Lista'
     CESTA = 'ls.Cesta',
     CLIENTE = 'ls.Cliente',
     CONVENIOS = 'ls.Convenios',

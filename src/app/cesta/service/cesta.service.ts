@@ -1,13 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 
-import { LocationService } from "../../core";
-import { ConvenioStorage } from '../../core/persistence';
 import { Item } from '../../core/cesta-storage/model/item';
 import { StorageFacade } from '../../core/persistence/storage.facade';
-import { QueryParamsInterface } from "../../core/location/query-params.interface";
-import { EnderecoEntregaStorage } from "../../core/persistence/model/entrega/endereco-entrega.storage";
-import { PoliticasDescontoStorage } from '../../core/persistence/model/politicas-desconto/politicas-desconto-model';
 
 @Injectable()
 export class CestaService{
@@ -15,9 +10,7 @@ export class CestaService{
 
     constructor(
         private storageFacade: StorageFacade
-    ){
-        
-    }
+    ){}
     public refresh(): void{
         location.reload(true)
     }
@@ -47,7 +40,7 @@ export class CestaService{
         let str = localStorage.getItem("ls.Cesta")
         let array = JSON.parse(str)
         
-        if(array[item].quantidade<99){
+        if(array[item].quantidade>0 && array[item].quantidade<99){
             array[item].quantidade++
             localStorage.setItem("ls.Cesta",JSON.stringify(array))
             this.cesta = this.storageFacade
@@ -61,7 +54,7 @@ export class CestaService{
         let str = localStorage.getItem("ls.Cesta")
         let array = JSON.parse(str)
 
-        if(array[item].quantidade>0){
+        if(array[item].quantidade>1 && array[item].quantidade<=99){
             array[item].quantidade--
             localStorage.setItem("ls.Cesta",JSON.stringify(array))
             this.cesta = this.storageFacade
@@ -71,19 +64,32 @@ export class CestaService{
     }
 
 
+    public setQuantidadeInput(item: any,i: any): void{
 
+        let str = localStorage.getItem("ls.Cesta")
+        let array = JSON.parse(str)
 
-
-
-
-
-
-
+        if(i.target.value>0 && i.target.value<100){
+            array[item].quantidade = i.target.value
+            localStorage.setItem("ls.Cesta",JSON.stringify(array))
+            this.cesta = this.storageFacade
+            this.refresh()
+        }
+        console.log("Change: "+i.target.value)
+    }
 
     public valorItem(item: any): string{
         return this.filtraNumero(item.produto.precoPor);
     }
 
+
+
+
+
+
+
+
+/*
     public adicionarItemNaCesta(item: Item): void {
         const cesta: Item[] = this.retornarCesta();
         this.storageFacade.cesta = cesta.concat(item);
@@ -102,8 +108,14 @@ export class CestaService{
         this.storageFacade.cesta = cesta;
     }
     
+    public valorItem(item: any): string{
+        return this.filtraNumero(item.produto.precoPor);
+    }
 
-    public atualizarCestaLocalStorage(itens: any): void {
+    
+    public valorItem(item: any): string{
+        return this.filtraNumero(item.produto.precoPor);
+    }estaLocalStorage(itens: any): void {
         const cesta = this.retornarCesta();
         if (Array.isArray(itens)) cesta.unshift(...itens);
         else cesta.unshift(itens);
@@ -111,13 +123,13 @@ export class CestaService{
     }
 
 
-    /*public limparCesta(tituloModal?: string): EstadoCestaModel { {
+    public limparCesta(tituloModal?: string): EstadoCestaModel { {
           return this.limpezaSemPbm();
-    } */
+    } 
 
 
     public verificarCestaVazia(): boolean {
         const cesta: Item[] = this.retornarCesta();
         return cesta.isEmpty();
-      }
+    }*/
 }

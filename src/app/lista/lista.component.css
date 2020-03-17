@@ -19,3 +19,13 @@
     font-size: 80%;
     border-radius: 4px;
 }
+.laranja{
+    color: #F68405;
+  }
+  .desc{
+    background-color: #F68405;
+    color: white
+  }
+  .margin{
+    margin-top: -15px !important;
+  }

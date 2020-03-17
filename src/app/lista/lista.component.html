@@ -14,43 +14,46 @@
 
 
 <div class="row">
-    <div class="col-md-12 item mt-1">
+    <div class="col-md-12 item mt-1" *ngFor="let item of lista; let i = index">
             <div class="col-md-12 float-left">
-                <p class="pt-2 text-uppercase font-weight-bold col-md-6 float-left">1 - 532580 - ibuprofeno 100mg</p>
+                <p class="pt-2 text-uppercase font-weight-bold col-md-6 float-left">{{[lista.length-i]}} - {{lista[i].produto.codigo}} - {{lista[i].produto.nome}}</p>
             
-                <div class="col-md-2 float-left">
-                    <p class="mt-3 text-success">Disponível: 1</p>
-                    <p class="font-weight-bold">Reservado: 0</p>
+                
+                <div class="col-sm-2 float-left">
+
+                    <ng-template [ngIf]="lista[i].produto.estoque > 0">
+                            <p class="mt-3 text-success">Disponível: {{lista[i].produto.estoque}}</p>
+                    </ng-template>
+                  
+                    <ng-template [ngIf]="lista[i].produto.estoque < 0">
+                        <p class="mt-3 text-danger">Disponível: {{lista[i].produto.estoque}}</p>
+                    </ng-template>
+
+                    <ng-template [ngIf]="lista[i].produto.estoque === 0">
+                            <p class="mt-3 text-muted">Sem estoque</p>
+                    </ng-template>
+
+                    <p class="font-weight-bold">Reservado: {{lista[i].quantidadeEntregar}}</p>
                 </div>
 
                 <div class="col-md-2 float-left bg-preco text-center">
-                    <p class="mt-3 font-weight-bold">Preço</p>
-                    <h6 class="mb-3 font-weight-bold">0,19</h6>
+
+                    <div *ngIf="lista[i].produto.valorDesconto == 0 ; else desconto">
+                        <p class="mt-3  font-weight-bold">Preço</p>
+                        <h5 class="font-weight-bold">R$ {{lista[i].produto.precoDe}} </h5> 
+                    </div>  
+                    <ng-template #desconto>
+                        <p class="pt-1 font-weight-bold">Promoção</p>
+                        <p class="margin laranja offset-xl-1 offset-md-1"><del>R$ {{lista[i].produto.precoDe}}</del></p> 
+                        <p class="margin desc col-xl-3 col-sm-6 text-center">-{{lista[i].produto.percentualDesconto}}%</p>
+                        <h6 class="margin mb-2 laranja font-weight-bold offset-xl-1 offset-md-1">R$ {{lista[i].produto.precoPor}}</h6>
+                    </ng-template>
+
                 </div>
 
                 <div class="col-md-2 float-right text-center pt-3">
                     <button class="mt-2 btn buttonAdicionar">Adicionar</button>
                 </div>          
         </div>          
-    </div>
-
-    <div class="col-md-12 item mt-1">
-            <div class="col-md-12 float-left">
-                <p class="pt-2 text-uppercase font-weight-bold col-md-6 float-left">1 - 532580 - ibuprofeno 100mg</p>
-            
-                <div class="col-md-2 float-left">
-                    <p class="mt-3 text-success">Disponível: 1</p>
-                    <p class="font-weight-bold">Reservado: 0</p>
-                </div>
-
-                <div class="col-md-2 float-left bg-preco text-center">
-                    <p class="mt-3 font-weight-bold">Preço</p>
-                    <h6 class="mb-3 font-weight-bold">0,19</h6>
-                </div>
-
-                <div class="col-md-2 float-right text-center pt-3">
-                    <button class="mt-2 btn buttonAdicionar">Adicionar</button>
-                </div>          
-        </div>          
-    </div>    
+    </div>  
 </div>    
