@@ -1,13 +1,8 @@
 import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 
-import { LocationService } from "../../core";
-import { ConvenioStorage } from '../../core/persistence';
 import { Item } from '../../core/cesta-storage/model/item';
 import { StorageFacade } from '../../core/persistence/storage.facade';
-import { QueryParamsInterface } from "../../core/location/query-params.interface";
-import { EnderecoEntregaStorage } from "../../core/persistence/model/entrega/endereco-entrega.storage";
-import { PoliticasDescontoStorage } from '../../core/persistence/model/politicas-desconto/politicas-desconto-model';
 
 @Injectable()
 export class ListaService{
@@ -38,6 +33,19 @@ export class ListaService{
         return this.filtraNumero(item.produto.precoPor);
     }
 
+    public adicionaItemCesta(item: any): void{
+        let str = localStorage.getItem("ls.Lista")
+        let arrayLista = JSON.parse(str)
+        let str2 = localStorage.getItem("ls.Cesta")
+        let cestaArray = JSON.parse(str2)
+        if(cestaArray == null){
+            cestaArray = []
+        }    
+        cestaArray = cestaArray.concat(arrayLista[item])
+        cestaArray = cestaArray.reverse()
+        localStorage.setItem("ls.Cesta",JSON.stringify(cestaArray))
+        //this.refresh()
+    }
 
 
 
@@ -50,8 +58,8 @@ export class ListaService{
 
 
     public buscarIndiceItem(item: Item): number {
-        const lista: Item[] = this.retornarLista();
-        return lista.findIndex(e => e.identificadorUnico == item.identificadorUnico);
+        const lista: Item[] = this.retorntem: anyrLista();
+        return lista.findIndex(e => e.idetem: anytificadorUnico == item.identificadorUnico);
     }
 
 

@@ -28,9 +28,9 @@
 
                         <ng-template #desconto>
                             <p class="pt-1 font-weight-bold">Promoção</p>
-                            <p class="margin laranja offset-xl-1 offset-md-1"><del>R$ {{this.CestaService.filtraNumero(cesta[i].produto.precoDe)}}</del></p> 
-                            <p class="margin desc col-xl-3 col-sm-6 text-center">-{{this.CestaService.filtraDesconto(cesta[i].produto.percentualDesconto)}}%</p>
-                            <h6 class="margin mb-2 laranja font-weight-bold offset-xl-1 offset-md-1">R$ {{this.CestaService.filtraNumero(cesta[i].produto.precoPor)}}</h6>
+                            <p class="margin laranja offset-xl-1 offset-md-1"><del>R$ {{CestaService.filtraNumero(cesta[i].produto.precoDe)}}</del></p> 
+                            <p class="margin desc col-xl-3 col-sm-6 text-center">-{{CestaService.filtraDesconto(cesta[i].produto.percentualDesconto)}}%</p>
+                            <h6 class="margin mb-2 laranja font-weight-bold offset-xl-1 offset-md-1">R$ {{CestaService.filtraNumero(cesta[i].produto.precoPor)}}</h6>
                         </ng-template>
                     
                     </div>
@@ -39,8 +39,9 @@
                         <button (click)=CestaService.diminuiQuantidade(i) class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
                         <input (change)=CestaService.setQuantidadeInput(i,$event) class="inputOmni col-sm-4" type="text" value="{{cesta[i].quantidade}}">
                         <button (click)=CestaService.aumentaQuantidade(i) class="buttonOmni"><i class="fas fa-plus"></i></button>
-                        <a (click)=CestaService.deletaItem(i) href="#" class="float-right buttonTrash text-right"><i class="far fa-trash-alt"></i></a>
+                        <a (click)=CestaService.deletaItem(i) class="float-right buttonTrash text-right"><i class="far fa-trash-alt"></i></a>
                     </div>   
                 </div>              
         </div>
     </div>
+<pdv-footer></pdv-footer>    

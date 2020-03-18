@@ -11,11 +11,13 @@ import { ListaService } from './service/lista.service';
 export class ListaComponent implements OnInit {
   public lista: any;
 
-  constructor(private CestaService: ListaService, private storageFacade: StorageFacade) { 
+  constructor(private listaService: ListaService, private storageFacade: StorageFacade) { 
 
   }
 
   ngOnInit() {
     this.lista = this.storageFacade.lista;
   }
+
+
 }
