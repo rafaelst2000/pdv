@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { Item } from '../../core/cesta-storage/model/item';
 import { StorageFacade } from '../../core/persistence/storage.facade';
+import { r } from "@angular/core/src/render3";
 
 @Injectable()
 export class ListaService{
@@ -34,23 +35,31 @@ export class ListaService{
     }
 
     public adicionaItemCesta(item: any): void{
-        let str = localStorage.getItem("ls.Lista")
-        let arrayLista = JSON.parse(str)
-        let str2 = localStorage.getItem("ls.Cesta")
-        let cestaArray = JSON.parse(str2)
-        if(cestaArray == null){
-            cestaArray = []
-        }    
-        cestaArray = cestaArray.concat(arrayLista[item])
-        cestaArray = cestaArray.reverse()
-        localStorage.setItem("ls.Cesta",JSON.stringify(cestaArray))
-        //this.refresh()
+        if(!this.itemExists(item)){
+            let str2 = localStorage.getItem("ls.Cesta")
+            let cestaArray = JSON.parse(str2)   
+            cestaArray = cestaArray.concat(item)
+            cestaArray = cestaArray.reverse()
+            localStorage.setItem("ls.Cesta",JSON.stringify(cestaArray))
+        }
+
     }
 
-
-
-
-    
+    public itemExists(item: any): boolean{
+        let str = localStorage.getItem("ls.Cesta")
+        let arrayLista = [item]
+        if(str == null || str == "")
+            localStorage.setItem("ls.Cesta",JSON.stringify(arrayLista))       
+        else{
+            arrayLista = JSON.parse(str)
+            let index = arrayLista.findIndex(val => val.produto.nome == item.produto.nome)
+            if(index<0)
+                return false    
+            else
+                return true
+        }
+    }
+  
     /*public adicionarItemNaLista(item: Item): void {
         const lista: Item[] = this.retornarLista();
         this.storageFacade.lista = lista.concat(item);
