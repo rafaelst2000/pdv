@@ -16,7 +16,8 @@ import { CoreModule } from './core/core.module';
 import { FooterService } from './footer/services/footer.service';
 import { CestaService } from './cesta/service/cesta.service';
 import { ListaService } from './lista/service/lista.service';
-
+import { FormsModule } from '@angular/forms';
+ 
 
 @NgModule({
   declarations: [
@@ -30,8 +31,8 @@ import { ListaService } from './lista/service/lista.service';
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
-    CoreModule
-
+    CoreModule,
+    FormsModule
   ],
   providers: [
     StorageFacade,
