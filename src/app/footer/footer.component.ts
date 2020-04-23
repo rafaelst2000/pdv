@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { StorageFacade } from '../core/persistence/storage.facade';
 import { FooterService } from './services/footer.service';
@@ -22,5 +22,6 @@ export class FooterComponent implements OnInit {
     this.total = this.FooterService.totalLiquidoCesta()
     this.descontos = this.FooterService.totalDescontosCesta()
   }
+
 
 }
