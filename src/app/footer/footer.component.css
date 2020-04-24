@@ -2,6 +2,9 @@ footer{
     background-color: #D6DFE4;
     box-shadow: inset 0 0 1em #D6DFE4, 0 0 2em lightgrey !important;
 }
+.teste{
+    padding-bottom: 100px;
+}
 .vertical{
     border:         none;
     border-left:    #CDCDCE;

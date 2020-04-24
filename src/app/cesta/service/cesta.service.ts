@@ -7,15 +7,12 @@ import { StorageFacade } from '../../core/persistence/storage.facade';
 @Injectable()
 export class CestaService{
 
-    constructor( private storageFacade: StorageFacade ){
-        
-    }
-    
+    constructor( private storageFacade: StorageFacade ){ }
+
     public filtraNumero(valor: number): string{
         let novaStr: string
         novaStr = valor.toFixed(2)     
-        return novaStr.replace(".",",");
-        
+        return novaStr.replace(".",",");    
     }
 
     public filtraDesconto(valor: number): string{
@@ -37,7 +34,7 @@ export class CestaService{
         let str = localStorage.getItem("ls.Cesta")
         let array = JSON.parse(str)
 
-        if(array[item].quantidade>1 && array[item].quantidade<=99){
+        if(array[item].quantidade>0 && array[item].quantidade<=99){
             array[item].quantidade--
             localStorage.setItem("ls.Cesta",JSON.stringify(array))
         }

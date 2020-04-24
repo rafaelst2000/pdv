@@ -42,7 +42,6 @@ export class ListaService{
             cestaArray = cestaArray.reverse()
             localStorage.setItem("ls.Cesta",JSON.stringify(cestaArray))
         }
-
     }
 
     public itemExists(item: any): boolean{

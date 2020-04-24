@@ -27,8 +27,21 @@ img{
   width: 30px;
   font-weight: bolder;
   font: sans-serif;
+}
+
+.buttonOmniDisabled{
+  border-radius: 50%;
+  background-color: #41B9DA;
+  color: white;
+  border: none !important;
+  height: 30px;
+  width: 30px;
+  font-weight: bolder;
+  font: sans-serif;
+  opacity: 0.6;
 
 }
+
 .buttonTrash{
   text-decoration: none;
   border: none;

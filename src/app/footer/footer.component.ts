@@ -13,15 +13,19 @@ export class FooterComponent implements OnInit {
   public descontos: number
   public cesta
 
-  constructor(private FooterService: FooterService, private storageFacade: StorageFacade) { 
-
-  }
+  constructor(private FooterService: FooterService, private storageFacade: StorageFacade) {}
 
   ngOnInit() {
     this.cesta = this.storageFacade.cesta;
     this.total = this.FooterService.totalLiquidoCesta()
     this.descontos = this.FooterService.totalDescontosCesta()
   }
+
+  /*ngOnChanges(){
+    this.cesta = this.storageFacade.cesta;
+    this.total = this.FooterService.totalLiquidoCesta()
+    this.descontos = this.FooterService.totalDescontosCesta()
+  } */
 
 
 }

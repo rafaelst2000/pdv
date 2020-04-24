@@ -36,18 +36,31 @@
                     </div>
     
                     <div class="col-md-2 float-left pt-4 text-right">
-            
-                        <button (click)=diminuiQuantidade(i) class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
+                       
+                        <button *ngIf="cesta[i].quantidade <2 ; else quantidadeMaior"
+                        class="buttonOmniDisabled text-center"><i class="fas fa-minus"></i></button>
+                        <ng-template #quantidadeMaior>
+                            <button (click)=diminuiQuantidade(i) class="buttonOmni text-center"><i class="fas fa-minus"></i></button>
+                        </ng-template>
+
 
                         <input 
-                        (keyup)=CestaService.setQuantidadeInput(i,$event.target.value)
+                        (keyup)="setQuantidadeInput(i,$event.target.value)"
                         class="inputOmni col-sm-4" type="text" [value]="cesta[i].quantidade">
 
-                        <button (click)=aumentaQuantidade(i) class="buttonOmni"><i class="fas fa-plus"></i></button> 
+
+                        <button *ngIf="cesta[i].quantidade < 99 ; else quantidadeMax"
+                        (click)=aumentaQuantidade(i) class="buttonOmni"><i class="fas fa-plus"></i></button> 
+                        <ng-template #quantidadeMax>
+                            <button class="buttonOmniDisabled text-center"><i class="fas fa-plus"></i></button>
+                        </ng-template>
+
+                        
                         <a (click)=deletaItem(i) class="float-right buttonTrash text-right"><i class="far fa-trash-alt"></i></a>
+
                     </div>   
                 </div>              
         </div>
     </div>
     
-<pdv-footer></pdv-footer>    
+<!--pdv-footer></pdv-footer> -->

@@ -9,9 +9,7 @@ import { Item } from '../../core/cesta-storage/model/item';
 export class FooterService {
     
 
-    constructor(
-        private storageFacade: StorageFacade
-    ){ }
+    constructor( private storageFacade: StorageFacade ){ }
 
     public totalLiquidoCesta(): number {
         const itensCesta = this.storageFacade.cesta || [];
