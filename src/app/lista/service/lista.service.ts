@@ -24,7 +24,6 @@ export class ListaService{
         return novaStr.replace(".",",");
     }
 
-
     public filtraDesconto(valor: number): string{
         return Math.trunc(valor).toString() 
     }
@@ -58,36 +57,4 @@ export class ListaService{
                 return true
         }
     }
-  
-    /*public adicionarItemNaLista(item: Item): void {
-        const lista: Item[] = this.retornarLista();
-        this.storageFacade.lista = lista.concat(item);
-    }
-
-
-    public buscarIndiceItem(item: Item): number {
-        const lista: Item[] = this.retorntem: anyrLista();
-        return lista.findIndex(e => e.idetem: anytificadorUnico == item.identificadorUnico);
-    }
-
-
-    public atualizarItemDaLista(item: Item): void {
-        const lista: Item[] = this.retornarLista();
-        lista[this.buscarIndiceItem(item)] = item;
-        this.storageFacade.lista = lista;
-    }
-    
-
-    public atualizarListaLocalStorage(itens: any): void {
-        const lista = this.retornarLista();
-        if (Array.isArray(itens)) lista.unshift(...itens);
-        else lista.unshift(itens);
-        this.storageFacade.lista = lista;
-    }
-
-
-    public verificarListaVazia(): boolean {
-        const lista: Item[] = this.retornarLista();
-        return lista.isEmpty();
-    } */
 }   

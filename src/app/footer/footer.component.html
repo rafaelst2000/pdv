@@ -4,12 +4,12 @@
         <div class="col-md-8 float-left text-right" >
             <div *ngIf="descontos > 0" class="col-md-9 float-left col-xl-10">
                 <h6 class="pt-3 font-weight-bold">Descontos</h6>
-                <h5 class="desc font-weight-bold">{{ this.FooterService.filtraNumero(descontos) }}</h5>
+                <h5 class="desc font-weight-bold">{{ descontos }}</h5>
             </div>
             <div class="col-md-3 float-right col-xl-2">
                     <h6 class="pt-3 font-weight-bold">Total</h6>
-                    
-                <h5 class="font-weight-bold">{{ this.FooterService.filtraNumero(total) }}</h5>
+                    <h5 class="font-weight-bold">{{ total }}</h5>
+              <!--  <h5 class="font-weight-bold">{{ this.FooterService.filtraNumero(total) }}</h5> -->
             </div>
         </div>
         
@@ -20,4 +20,5 @@
             <button type="button" class="btn preVenda col-md-7 float-right mt-3">Salvar pré-venda</button>
         </div>
     </footer>
+
 </div>

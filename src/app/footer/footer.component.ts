@@ -9,9 +9,10 @@ import { FooterService } from './services/footer.service';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-  public total: number
-  public descontos: number
+  @Input() total: number
+  @Input() descontos: number
   public cesta
+  
 
   constructor(private FooterService: FooterService, private storageFacade: StorageFacade) {}
 
