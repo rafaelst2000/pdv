@@ -23,14 +23,14 @@
                     <div class="col-sm-2 float-left align-items-center">
                         <div *ngIf="cesta[i].produto.valorDesconto == 0 ; else desconto">
                             <p class="mt-3  font-weight-bold">Preço</p>
-                            <h5 class="font-weight-bold">R$ {{ CestaService.valorItem(cesta[i]) }} </h5> 
+                            <h5 class="font-weight-bold">{{ cesta[i].produto.precoDe | currency: 'BRL' }} </h5> 
                         </div>  
 
                         <ng-template #desconto>
                             <p class="pt-1 font-weight-bold">Promoção</p>
-                            <p class="margin laranja offset-xl-1 offset-md-1"><del>R$ {{ CestaService.filtraNumero(cesta[i].produto.precoDe) }}</del></p> 
-                            <p class="margin desc col-xl-3 col-sm-6 text-center">-{{ CestaService.filtraDesconto(cesta[i].produto.percentualDesconto) }}%</p>
-                            <h6 class="margin mb-2 laranja font-weight-bold offset-xl-1 offset-md-1">R$ {{ CestaService.filtraNumero(cesta[i].produto.precoPor) }}</h6>
+                            <p class="margin laranja offset-xl-1 offset-md-1"><del>{{ cesta[i].produto.precoDe | currency: 'BRL' }}</del></p> 
+                            <p class="margin desc col-xl-3 col-sm-6 text-center">-{{ cesta[i].produto.percentualDesconto | mathTrunc }}%</p>
+                            <h6 class="margin mb-2 laranja font-weight-bold offset-xl-1 offset-md-1">{{ cesta[i].produto.precoPor | currency: 'BRL' }}</h6>
                         </ng-template>
                     
                     </div>
@@ -64,5 +64,5 @@
     </div>
 <pdv-footer 
     [total]="valorTotal"
-    [descontos]="descontoTotal"
-></pdv-footer>
+    [descontos]="descontoTotal">   
+</pdv-footer>

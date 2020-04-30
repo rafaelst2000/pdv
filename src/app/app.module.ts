@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
 
 import{ROUTES} from './app.routes';
 
@@ -17,7 +19,9 @@ import { FooterService } from './footer/services/footer.service';
 import { CestaService } from './cesta/service/cesta.service';
 import { ListaService } from './lista/service/lista.service';
 import { FormsModule } from '@angular/forms';
+import { MathTruncPipe } from './math-trunc.pipe';
  
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -25,21 +29,25 @@ import { FormsModule } from '@angular/forms';
     HeaderComponent,
     ListaComponent,
     CestaComponent,
-    FooterComponent
+    FooterComponent,
+    MathTruncPipe
+    
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
     CoreModule,
-    FormsModule
+    FormsModule,
+    
   ],
   providers: [
     StorageFacade,
     PersistenceService,
     FooterService,
     CestaService,
-    ListaService
+    ListaService,
+    {provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]
 })

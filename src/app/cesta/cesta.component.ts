@@ -9,53 +9,45 @@ import { CestaService } from './service/cesta.service';
   styleUrls: ['./cesta.component.css']
 })
 export class CestaComponent implements OnInit {
-  public cesta: any;
-  valorTotal: number;
-  descontoTotal: number;
+  public cesta
+  valorTotal
+  descontoTotal
 
-  constructor(private CestaService: CestaService, private storageFacade: StorageFacade) {}
+  constructor(private cestaService: CestaService, private storageFacade: StorageFacade) {}
 
   ngOnInit() {
     this.cesta = this.storageFacade.cesta;
-    this.valorTotal = this.totalLiquidoCesta();
-    this.descontoTotal = this.totalDescontosCesta()
+    this.valorTotal = this.cestaService.totalLiquidoCesta()
+    this.descontoTotal = this.cestaService.totalDescontosCesta()
   }
 
   public atualizaValores(){
-    this.totalLiquidoCesta()
-    this.totalDescontosCesta()
+    this.setTotalLiquidoCesta()
+    this.setTotalDescontosCesta()
   }
 
-  public totalLiquidoCesta(){
-    const itensCesta = this.storageFacade.cesta || [];
-    const valor = itensCesta.reduce((acc, cur) => acc += cur.quantidade * cur.produto.precoPor, 0);
-    const total =  Math.round(valor * 100) / 100;
-    this.valorTotal = total;
-    return total
-} 
+  public setTotalLiquidoCesta(){
+      this.valorTotal = this.cestaService.totalLiquidoCesta()
+  } 
 
-public totalDescontosCesta(): number {
-  const itensCesta = this.storageFacade.cesta || [];
-  const desc = itensCesta.reduce((acc, cur) => acc += cur.quantidade * (cur.produto.precoDe - cur.produto.precoPor), 0);
-  const total = Math.round(desc * 100) /100;
-  this.descontoTotal = total;
-  return total
-}
-
+  public setTotalDescontosCesta() {
+      this.descontoTotal = this.cestaService.totalDescontosCesta()
+  }
 
   public deletaItem(item: any): void{
-    let str = localStorage.getItem("ls.Cesta")
-    let array = JSON.parse(str)
-    array.splice(item,1)
-    localStorage.setItem("ls.Cesta",JSON.stringify(array))
+    this.cestaService.deletaItemStorage(item)
     this.cesta = this.storageFacade.cesta
-    this.atualizaValores()
+    this.atualizaValores() 
   }
 
   public setQuantidadeInput(item: any, quant: number): void{
     if(quant>0 && quant<=99){
       this.cesta[item].quantidade = quant
-      this.CestaService.setQuantidadeInput(item, quant)
+      this.cestaService.alteraQuantidadeInputStorage(item, quant)
+    }else if(quant>99){
+      this.cesta[item].quantidade = 99
+    }else{
+      this.cesta[item].quantidade = 1
     }
     this.atualizaValores()
   }
@@ -63,7 +55,7 @@ public totalDescontosCesta(): number {
   public diminuiQuantidade(item: any){
     if(this.cesta[item].quantidade>1 && this.cesta[item].quantidade <=99){
       this.cesta[item].quantidade--
-      this.CestaService.diminuiQuantidade(item)
+      this.cestaService.diminuiQuantidadeStorage(item)
     }
     this.atualizaValores()
   }
@@ -71,9 +63,10 @@ public totalDescontosCesta(): number {
   public aumentaQuantidade(item: any){
     if(this.cesta[item].quantidade>0 && this.cesta[item].quantidade <99){
       this.cesta[item].quantidade++
-      this.CestaService.aumentaQuantidade(item)
+      this.cestaService.aumentaQuantidadeStorage(item)
     }  
     this.atualizaValores()
   }
+
 
 }
