@@ -19,7 +19,7 @@ export class FooterComponent implements OnInit {
   ngOnInit() {
     this.cesta = this.storageFacade.cesta;
   }
-  ngOnChanges(): void {
+  /*ngOnChanges(): void {
     console.log("ngOnChanges")
-  }
+  } */
 }
