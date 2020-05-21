@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { BuscaIntegrationService } from '../lista/service/busca-integration.service';
 
 @Component({
   selector: 'pdv-header',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  items: any;
 
-  constructor() { }
+  constructor(private buscaIntegration: BuscaIntegrationService) { }
 
   ngOnInit() {
+  }
+  teste(item){
+    this.buscaIntegration.buscarItemPorDescricao(item)
+    //console.log(item)
   }
 
 }
