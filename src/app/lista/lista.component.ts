@@ -14,29 +14,22 @@ export class ListaComponent implements OnInit {
   item: any;
   
 
-  constructor(private listaService: ListaService,
-              private storageFacade: StorageFacade,
-              private buscaIntegration: BuscaIntegrationService ) { 
+  constructor(private buscaIntegration: BuscaIntegrationService ) { 
   }
 
   ngOnInit() {
-    this.lista = this.storageFacade.lista;
     this.buscaIntegration.buscaItemPorDescricao$.subscribe(
-      response => this.buscaItems(response)
+      res=> this.buscaItems(res)
     )
   }
 
-  buscaItems(itemDigitado: string){
-    
+  buscaItems(itemDigitado){
       if(itemDigitado != ""){
-        
         this.listadeItems = this.listadeItems.filter(res=>{
           return res.produto.nome.toLowerCase().match(itemDigitado.toLowerCase())
         })
-        this.lista = this.listadeItems
-      }else{
-        this.ngOnInit()
-      }  
+        console.log(this.listadeItems)
+      }
     }
    
   public listadeItems = [

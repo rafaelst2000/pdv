@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   }
   teste(item){
     this.buscaIntegration.buscarItemPorDescricao(item)
-    //console.log(item)
   }
 
 }
