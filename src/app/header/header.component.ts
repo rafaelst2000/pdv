@@ -13,8 +13,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
   }
-  teste(item){
-    this.buscaIntegration.buscarItemPorDescricao(item)
+  enviaTexto(item){
+    console.log(item)
+    //this.buscaIntegration.buscarItemPorDescricao(item)
   }
 
 }

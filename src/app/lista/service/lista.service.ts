@@ -17,15 +17,15 @@ export class ListaService{
     public refresh(): void{
         location.reload(true)
     }
-    
+
     public filtraNumero(valor: number): string{
         let novaStr: string
-        novaStr = valor.toFixed(2)     
+        novaStr = valor.toFixed(2)
         return novaStr.replace(".",",");
     }
 
     public filtraDesconto(valor: number): string{
-        return Math.trunc(valor).toString() 
+        return Math.trunc(valor).toString()
     }
 
 
@@ -34,9 +34,10 @@ export class ListaService{
     }
 
     public adicionaItemCesta(item: any): void{
-        if(!this.itemExists(item)){
+      console.log(item)
+       if(!this.itemExists(item)){
             let str2 = localStorage.getItem("ls.Cesta")
-            let cestaArray = JSON.parse(str2)   
+            let cestaArray = JSON.parse(str2)
             cestaArray = cestaArray.concat(item)
             cestaArray = cestaArray.reverse()
             localStorage.setItem("ls.Cesta",JSON.stringify(cestaArray))
@@ -47,14 +48,14 @@ export class ListaService{
         let str = localStorage.getItem("ls.Cesta")
         let arrayLista = [item]
         if(str == null || str == "")
-            localStorage.setItem("ls.Cesta",JSON.stringify(arrayLista))       
+            localStorage.setItem("ls.Cesta",JSON.stringify(arrayLista))
         else{
             arrayLista = JSON.parse(str)
             let index = arrayLista.findIndex(val => val.produto.nome == item.produto.nome)
             if(index<0)
-                return false    
+                return false
             else
                 return true
         }
     }
-}   
+}

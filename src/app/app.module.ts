@@ -21,7 +21,8 @@ import { ListaService } from './lista/service/lista.service';
 import { FormsModule } from '@angular/forms';
 import { MathTruncPipe } from './math-trunc.pipe';
 import { BuscaIntegrationService } from './lista/service/busca-integration.service'
- 
+import { HttpClientModule } from '@angular/common/http';
+
 registerLocaleData(localePt);
 
 @NgModule({
@@ -32,15 +33,16 @@ registerLocaleData(localePt);
     CestaComponent,
     FooterComponent,
     MathTruncPipe
-    
+
   ],
   imports: [
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
     CoreModule,
+    HttpClientModule,
     FormsModule,
-    
+
   ],
   providers: [
     StorageFacade,
