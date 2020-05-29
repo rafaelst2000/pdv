@@ -20,8 +20,9 @@ import { CestaService } from './cesta/service/cesta.service';
 import { ListaService } from './lista/service/lista.service';
 import { FormsModule } from '@angular/forms';
 import { MathTruncPipe } from './math-trunc.pipe';
-import { BuscaIntegrationService } from './lista/service/busca-integration.service'
+import { BuscaRestService } from './lista/service/busca-rest.service'
 import { HttpClientModule } from '@angular/common/http';
+import { BuscaIntegrationService } from './lista/service/busca-integration.service';
 
 registerLocaleData(localePt);
 
@@ -50,7 +51,8 @@ registerLocaleData(localePt);
     FooterService,
     CestaService,
     ListaService,
-    BuscaIntegrationService,
+    BuscaRestService,
+    BuscaIntegrationService
     {provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

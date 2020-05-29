@@ -3,20 +3,22 @@ import { Observable } from 'rxjs/Observable';
 
 import { Item } from '../../core/cesta-storage/model/item';
 import { StorageFacade } from '../../core/persistence/storage.facade';
-import { r } from "@angular/core/src/render3";
+import { BuscaRestService } from './busca-rest.service'
+
 
 @Injectable()
 export class ListaService{
     private lista = this.storageFacade
 
-    constructor(
-        private storageFacade: StorageFacade
-    ){}
+    constructor(private storageFacade: StorageFacade,
+                private buscaRestService: BuscaRestService){}
 
 
-    public refresh(): void{
-        location.reload(true)
+    public buscarItens(descricao: string): Observable<Item[]>{
+      return this.buscaRestService.buscar(descricao)
+        .map(items => items.filter(item => item.produto.nome.toUpperCase().includes(descricao.toUpperCase())))
     }
+
 
     public filtraNumero(valor: number): string{
         let novaStr: string

@@ -1,4 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { BuscaRestService } from '../lista/service/busca-rest.service';
+import { Subject } from 'rxjs/Subject';
+import { ListaService } from '../lista/service/lista.service';
 import { BuscaIntegrationService } from '../lista/service/busca-integration.service';
 
 @Component({
@@ -7,15 +10,18 @@ import { BuscaIntegrationService } from '../lista/service/busca-integration.serv
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  items: any;
 
-  constructor(private buscaIntegration: BuscaIntegrationService) { }
+  itemDigitado: string
+  itens: any;
+
+  constructor(private buscaIntegrationService: BuscaIntegrationService) {}
 
   ngOnInit() {
   }
-  enviaTexto(item){
-    console.log(item)
-    //this.buscaIntegration.buscarItemPorDescricao(item)
+
+  public buscar(desc: string): void{
+    this.buscaIntegrationService.buscarItemPorDescricao(desc)
   }
+
 
 }
