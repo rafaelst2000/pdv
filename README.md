@@ -1,17 +1,16 @@
-# PdvRafael
-POC de testes do PDV
+# POC Ponto de Vendas
 
 Projeto gerado pelo Angular CLI versão 1.7.4.
 
-## Running
+## Executando
 
-Run npm i
+npm i
 
-Run ng serve
+ng serve
 
-Open localhost:4200
+Abra localhost:4200
 
-Create the localstorage key: "ls.Cesta" and copy the json content from cesta.json
+Crie uma chave na localstorage "ls.Cesta" (sem aspas) e copie o conteúdo de cesta.json
 
 ## Versoes
 
