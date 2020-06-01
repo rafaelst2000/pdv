@@ -1,7 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Observable } from 'rxjs/Observable';
 
-import { Item } from '../../core/cesta-storage/model/item';
 import { StorageFacade } from '../../core/persistence/storage.facade';
 
 @Injectable()
@@ -12,8 +10,8 @@ constructor( private storageFacade: StorageFacade ){ }
     public aumentaQuantidadeStorage(item: any): void{
         let str = localStorage.getItem("ls.Cesta")
         let array = JSON.parse(str)
-            
-        if(array[item].quantidade>0 && array[item].quantidade<99){    
+
+        if(array[item].quantidade>0 && array[item].quantidade<99){
             array[item].quantidade++
             localStorage.setItem("ls.Cesta",JSON.stringify(array))
         }

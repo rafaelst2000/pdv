@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { StorageFacade } from '../core/persistence/storage.facade';
-import { FooterService } from './services/footer.service';
 
 
 @Component({
@@ -12,14 +11,11 @@ import { FooterService } from './services/footer.service';
 export class FooterComponent implements OnInit {
   @Input() total: number = 0
   @Input() descontos: number = 0
-  public cesta
+  public cesta: any
 
-  constructor(private FooterService: FooterService, private storageFacade: StorageFacade) {}
+  constructor(private storageFacade: StorageFacade) {}
 
   ngOnInit() {
     this.cesta = this.storageFacade.cesta;
   }
-  /*ngOnChanges(): void {
-    console.log("ngOnChanges")
-  } */
 }

@@ -1,14 +1,14 @@
-import { Injectable, EventEmitter  } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+
+import { Item } from '../../core/cesta-storage/model/item';
+
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 
-import { Item } from '../../core/cesta-storage/model/item';
-import { StorageFacade } from '../../core/persistence/storage.facade';
-
-import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class BuscaRestService{

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { StorageFacade } from '../core/persistence/storage.facade';
 import { CestaService } from './service/cesta.service';
@@ -9,9 +9,9 @@ import { CestaService } from './service/cesta.service';
   styleUrls: ['./cesta.component.css']
 })
 export class CestaComponent implements OnInit {
-  public cesta
-  valorTotal
-  descontoTotal
+  public cesta : any
+  valorTotal : number
+  descontoTotal : number
 
   constructor(private cestaService: CestaService, private storageFacade: StorageFacade) {}
 
@@ -28,7 +28,7 @@ export class CestaComponent implements OnInit {
 
   public setTotalLiquidoCesta(){
       this.valorTotal = this.cestaService.totalLiquidoCesta()
-  } 
+  }
 
   public setTotalDescontosCesta() {
       this.descontoTotal = this.cestaService.totalDescontosCesta()
@@ -37,7 +37,7 @@ export class CestaComponent implements OnInit {
   public deletaItem(item: any): void{
     this.cestaService.deletaItemStorage(item)
     this.cesta = this.storageFacade.cesta
-    this.atualizaValores() 
+    this.atualizaValores()
   }
 
   public setQuantidadeInput(item: any, quant: number): void{
@@ -64,7 +64,7 @@ export class CestaComponent implements OnInit {
     if(this.cesta[item].quantidade>0 && this.cesta[item].quantidade <99){
       this.cesta[item].quantidade++
       this.cestaService.aumentaQuantidadeStorage(item)
-    }  
+    }
     this.atualizaValores()
   }
 

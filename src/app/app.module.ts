@@ -15,7 +15,6 @@ import { FooterComponent } from './footer/footer.component';
 import { StorageFacade } from './core/persistence/storage.facade';
 import { PersistenceService } from './core/persistence';
 import { CoreModule } from './core/core.module';
-import { FooterService } from './footer/services/footer.service';
 import { CestaService } from './cesta/service/cesta.service';
 import { ListaService } from './lista/service/lista.service';
 import { FormsModule } from '@angular/forms';
@@ -48,11 +47,10 @@ registerLocaleData(localePt);
   providers: [
     StorageFacade,
     PersistenceService,
-    FooterService,
     CestaService,
     ListaService,
     BuscaRestService,
-    BuscaIntegrationService
+    BuscaIntegrationService,
     {provide: LOCALE_ID, useValue: 'pt-BR' }
   ],
   bootstrap: [AppComponent]

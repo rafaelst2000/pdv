@@ -1,7 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { BuscaRestService } from '../lista/service/busca-rest.service';
-import { Subject } from 'rxjs/Subject';
-import { ListaService } from '../lista/service/lista.service';
+import { Component, OnInit } from '@angular/core';
+
 import { BuscaIntegrationService } from '../lista/service/busca-integration.service';
 
 @Component({
@@ -19,8 +17,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  public buscar(desc: string): void{
-    this.buscaIntegrationService.buscarItemPorDescricao(desc)
+  public buscar(descricao: string): void{
+    this.buscaIntegrationService.buscarItemPorDescricao(descricao)
   }
 
 

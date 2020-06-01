@@ -2,37 +2,18 @@ import { Injectable } from "@angular/core";
 import { Observable } from 'rxjs/Observable';
 
 import { Item } from '../../core/cesta-storage/model/item';
-import { StorageFacade } from '../../core/persistence/storage.facade';
 import { BuscaRestService } from './busca-rest.service'
 
 
 @Injectable()
 export class ListaService{
-    private lista = this.storageFacade
 
-    constructor(private storageFacade: StorageFacade,
-                private buscaRestService: BuscaRestService){}
+    constructor(private buscaRestService: BuscaRestService){}
 
 
     public buscarItens(descricao: string): Observable<Item[]>{
       return this.buscaRestService.buscar(descricao)
         .map(items => items.filter(item => item.produto.nome.toUpperCase().includes(descricao.toUpperCase())))
-    }
-
-
-    public filtraNumero(valor: number): string{
-        let novaStr: string
-        novaStr = valor.toFixed(2)
-        return novaStr.replace(".",",");
-    }
-
-    public filtraDesconto(valor: number): string{
-        return Math.trunc(valor).toString()
-    }
-
-
-    public valorItem(item: any): string{
-        return this.filtraNumero(item.produto.precoPor);
     }
 
     public adicionaItemCesta(item: any): void{
