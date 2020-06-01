@@ -60,6 +60,13 @@
   },
   "defaults": {
     "styleExt": "css",
-    "component": {}
+    "build": {
+      "showCircularDependencies": false
+    },
+    "component": {
+    }
+  },
+  "warnings": {
+    "typescriptMismatch": false
   }
 }

@@ -14,7 +14,6 @@ import { CestaComponent } from './cesta/cesta.component';
 import { FooterComponent } from './footer/footer.component';
 import { StorageFacade } from './core/persistence/storage.facade';
 import { PersistenceService } from './core/persistence';
-import { CoreModule } from './core/core.module';
 import { CestaService } from './cesta/service/cesta.service';
 import { ListaService } from './lista/service/lista.service';
 import { FormsModule } from '@angular/forms';
@@ -39,7 +38,6 @@ registerLocaleData(localePt);
     BrowserModule,
     HttpModule,
     RouterModule.forRoot(ROUTES),
-    CoreModule,
     HttpClientModule,
     FormsModule,
 
