@@ -21,6 +21,8 @@ import { MathTruncPipe } from './math-trunc.pipe';
 import { BuscaRestService } from './lista/service/busca-rest.service'
 import { HttpClientModule } from '@angular/common/http';
 import { BuscaIntegrationService } from './lista/service/busca-integration.service';
+import { ModalPreVendaComponent } from './modal-pre-venda/modal-pre-venda.component';
+import { FooterService } from './footer/service/footer.service';
 
 registerLocaleData(localePt);
 
@@ -31,7 +33,8 @@ registerLocaleData(localePt);
     ListaComponent,
     CestaComponent,
     FooterComponent,
-    MathTruncPipe
+    MathTruncPipe,
+    ModalPreVendaComponent
 
   ],
   imports: [
@@ -47,6 +50,7 @@ registerLocaleData(localePt);
     PersistenceService,
     CestaService,
     ListaService,
+    FooterService,
     BuscaRestService,
     BuscaIntegrationService,
     {provide: LOCALE_ID, useValue: 'pt-BR' }

@@ -2,7 +2,6 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Item } from '../core/cesta-storage/model/item';
 
 import { ListaService } from './service/lista.service';
-import { BuscaRestService } from './service/busca-rest.service';
 import { BuscaIntegrationService } from './service/busca-integration.service';
 
 @Component({
@@ -13,11 +12,9 @@ import { BuscaIntegrationService } from './service/busca-integration.service';
 export class ListaComponent implements OnInit {
   lista = [];
 
-  constructor(private buscaIntegration: BuscaRestService,
-              private listaService: ListaService,
-              private buscaIntegrationService: BuscaIntegrationService) {
+  constructor(private listaService: ListaService,
+              private buscaIntegrationService: BuscaIntegrationService) {}
 
-  }
   ngOnInit() {
     this.buscaIntegrationService.buscaItemPorDescricao$
       .subscribe(descricao => this.buscarItemPorDescricao(descricao))

@@ -17,7 +17,6 @@ export class ListaService{
     }
 
     public adicionaItemCesta(item: any): void{
-      console.log(item)
        if(!this.itemExists(item)){
             let str2 = localStorage.getItem("ls.Cesta")
             let cestaArray = JSON.parse(str2)

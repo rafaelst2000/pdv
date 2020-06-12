@@ -1,0 +1,8 @@
+.text-size{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  font-size: 1000%;
+  color: #12224c;
+  padding: 50px;
+}

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { StorageFacade } from '../core/persistence/storage.facade';
+import { FooterService } from './service/footer.service';
 
 
 @Component({
@@ -13,9 +14,16 @@ export class FooterComponent implements OnInit {
   @Input() descontos: number = 0
   public cesta: any
 
-  constructor(private storageFacade: StorageFacade) {}
+  constructor(private storageFacade: StorageFacade,
+              private footerService: FooterService) {}
 
   ngOnInit() {
     this.cesta = this.storageFacade.cesta;
   }
+
+  addPreVenda(){
+    this.footerService.salvarPreVenda(this.total)
+  }
+
+
 }
