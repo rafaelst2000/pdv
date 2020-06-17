@@ -7,7 +7,7 @@
                     <div class="col-sm-2 float-left">
 
                         <ng-template [ngIf]="cesta[i].produto.estoque > 0">
-                                <p class="mt-3 text-success">Disponível: {{ cesta[i].produto.estoque }}</p>
+                            <p class="mt-3 text-success">Disponível: {{ cesta[i].produto.estoque }}</p>
                         </ng-template>
                       
                         <ng-template [ngIf]="cesta[i].produto.estoque < 0">
@@ -15,7 +15,7 @@
                         </ng-template>
 
                         <ng-template [ngIf]="cesta[i].produto.estoque === 0">
-                                <p class="mt-3 text-muted">Sem estoque</p>
+                            <p class="mt-3 text-muted">Sem estoque</p>
                         </ng-template>
 
                         <p class="font-weight-bold">Reservado: {{ cesta[i].quantidadeEntregar }}</p>
@@ -55,14 +55,13 @@
                         <ng-template #quantidadeMax>
                             <button class="buttonOmniDisabled text-center"><i class="fas fa-plus"></i></button>
                         </ng-template>
-
-                        
+              
                         <a (click)=deletaItem(i) class="float-right buttonTrash text-right"><i class="far fa-trash-alt"></i></a>
-
                     </div>   
                 </div>              
         </div>
     </div>
+
 <pdv-footer 
     [total]="valorTotal"
     [descontos]="descontoTotal">   

@@ -1,8 +1,32 @@
-.text-size{
-  display: flex;
+.modal-content{
+  display: flex !important;
   text-align: center;
   justify-content: center;
-  font-size: 1000%;
-  color: #12224c;
-  padding: 50px;
+}
+
+.modal-body i{
+  color: #3FC20B;
+  font-size: 48px;
+}
+
+.modal-body p{
+  font-size: 16px;
+  margin-top: 8px;
+}
+
+.modal-body div{
+  text-align: end;
+  justify-content: end;
+}
+
+.modal-header{
+  background-color: #F4F7FA !important; 
+  text-align: center;
+  justify-content: center;
+}
+
+button{
+  background-color: #41B9DA;
+  color: white;
+  box-shadow: 0 4px 17px rgba(black, 0.35);
 }

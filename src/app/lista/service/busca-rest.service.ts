@@ -12,7 +12,7 @@ import 'rxjs/add/operator/switchMap';
 
 @Injectable()
 export class BuscaRestService{
-  url = 'https://14bc651f-3b31-459a-b851-8c3204d15731.mock.pstmn.io/itens';
+  url = 'https://1e35c7bb-db17-46ff-8d40-d1063798d720.mock.pstmn.io/itens';
 
   constructor(private http: HttpClient) { }
 
