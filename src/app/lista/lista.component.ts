@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Item } from '../core/cesta-storage/model/item';
 
 import { ListaService } from './service/lista.service';
 import { BuscaIntegrationService } from './service/busca-integration.service';
@@ -17,11 +16,7 @@ export class ListaComponent implements OnInit {
 
   ngOnInit() {
     this.buscaIntegrationService.buscaItemPorDescricao$
-      .subscribe(descricao => this.buscarItemPorDescricao(descricao))
+      .switchMap(descricao => this.listaService.buscarItens(descricao))
+      .subscribe(items => this.lista = items);
   }
-  public buscarItemPorDescricao(descricao: string){
-    this.listaService.buscarItens(descricao)
-      .subscribe(items => this.lista = items)
-  }
-
 }

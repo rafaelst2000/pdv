@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('pdv-rafael App', () => {
+/*describe('pdv-rafael App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -12,3 +12,4 @@ describe('pdv-rafael App', () => {
     expect(page.getParagraphText()).toEqual('Welcome to pdv!');
   });
 });
+*/
